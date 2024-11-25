@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Actions;
 
+use App\Exceptions\CustomUnAuthorized;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
@@ -13,12 +14,12 @@ class AuthLoginAction {
     public function __construct(protected UserRepository $repository)
     {}
     
-    public function handle(LoginRequest $request) {
-        $credentials = $request->only('email', 'password');
-        $user = $this->repository->getByEmail($request->email);
+    public function handle(array $request) {
+        $credentials = array_intersect_key($request, array_flip(['email', 'password']));
+        $user = $this->repository->getByEmail($request['email']);
         if (!Auth::attempt($credentials)) {
-            if(!$user || !Hash::check($request->password, $user->password)) {
-                
+            if(!$user || !Hash::check($request['password'], $user->password)) {
+                throw new CustomUnAuthorized();
             }
         }
         $token = $user->createToken('token')->plainTextToken;

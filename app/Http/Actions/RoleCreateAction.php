@@ -6,7 +6,7 @@ use App\Http\Requests\RoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 
-class RoleAddAction 
+class RoleCreateAction 
 {
     public function handle(RoleRequest $request) {
         $role = Role::create([

@@ -16,8 +16,8 @@ class AuthController extends Controller
     ) {}
 
     public function login(LoginRequest $request){
-        
-
+        $token = $this->loginAction->handle($request->validated());
+        return new ApiResponse($token);
     }
 
     public function register(UserRequest $request){
