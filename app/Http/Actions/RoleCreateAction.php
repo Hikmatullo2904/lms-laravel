@@ -8,12 +8,12 @@ use App\Models\Role;
 
 class RoleCreateAction 
 {
-    public function handle(RoleRequest $request) {
+    public function handle(array $request) {
         $role = Role::create([
-            'name' => $request->name
+            'name' => $request['name']
         ]);
 
-        foreach($request->permissions as $permission) {
+        foreach($request['permissions'] as $permission) {
             $permission = Permission::where('name', $permission)->firstOrFail();
             $role->permissions()->attach($permission);
         }
