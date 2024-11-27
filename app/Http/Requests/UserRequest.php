@@ -21,6 +21,7 @@ class UserRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'username' => 'required|unique:users',
+            'role_enum' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:4'
         ];
