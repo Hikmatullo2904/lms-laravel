@@ -14,7 +14,7 @@ class RoleCreateAction
         ]);
 
         foreach($request['permissions'] as $permission) {
-            $permission = Permission::where('name', $permission)->firstOrFail();
+            $permission = Permission::findOrFail($permission);
             $role->permissions()->attach($permission);
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Actions;
 
 use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
 
 class UserGetAllAction {
 
@@ -10,7 +11,7 @@ class UserGetAllAction {
         protected UserRepository $userRepository
     ) {}
 
-    public function handle() {
-        return $this->userRepository->getAll();
+    public function handle(Request $request) {
+        return $this->userRepository->getAll($request);
     }
 }

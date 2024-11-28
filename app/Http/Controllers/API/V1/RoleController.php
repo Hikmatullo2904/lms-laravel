@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Actions\RoleCreateAction;
 use App\Http\Actions\RoleAddPermissionAction;
+use App\Http\Actions\RoleGetAllAction;
 use App\Http\Actions\RoleRemovePermissionAction;
 use App\Http\Requests\RoleAddPermissionRequest;
 use App\Http\Requests\RoleCrudPermissionRequest;
 use App\Http\Requests\RoleRequest;
+use App\Http\Resources\RoleCollection;
+use App\Http\Resources\RoleResource;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -16,7 +19,8 @@ class RoleController extends Controller
     public function __construct(
         protected RoleCreateAction $roleAddAction,
         protected RoleAddPermissionAction $roleAddPermissionAction,
-        protected RoleRemovePermissionAction $roleRemovePermissionAction
+        protected RoleRemovePermissionAction $roleRemovePermissionAction,
+        protected RoleGetAllAction $roleGetAllAction
     ){}
     public function create(RoleRequest $request) {
        $this->roleAddAction->handle($request->validated());
@@ -28,6 +32,14 @@ class RoleController extends Controller
 
     public function removePermission($id, RoleCrudPermissionRequest $request) {
         $this->roleRemovePermissionAction->handle($id, $request->validated());
+    }
+
+    public function index() {
+        return new RoleCollection($this->roleGetAllAction->handle());
+    }
+
+    public function show($id) {
+        return new RoleResource(Role::findOrFail($id));
     }
 
 
