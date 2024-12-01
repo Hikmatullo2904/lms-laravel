@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\AuthLoginAction;
-use App\Http\Actions\AuthRegisterAction;
+use App\Actions\Auth\AuthLoginAction;
+use App\Actions\Auth\AuthRegisterAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\ApiResponse;

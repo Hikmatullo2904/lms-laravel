@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\AuthController;
+use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
@@ -33,5 +34,10 @@ Route::prefix('v1')->group(function () {
         Route::get('/users', [UserController::class, 'index']);
         Route::put('/users/{id}', [UserController::class, 'update']);
         Route::delete('/users/{id}', [UserController::class, 'delete']);
+
+        //Category
+        Route::post('/categories', [CategoryController::class, 'create']);
+        Route::get('/categories', [CategoryController::class, 'index']);
+        Route::put('/categories/{id}', [CategoryController::class, 'update']);
     });
 });

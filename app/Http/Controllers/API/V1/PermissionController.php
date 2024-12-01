@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\PermissionCreateAction;
-use App\Http\Actions\PermissionGetAllAction;
-use App\Http\Actions\RoleCreateAction;
+use App\Actions\Permission\PermissionCreateAction;
+use App\Actions\Permission\PermissionGetAllAction;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Resources\ApiResponse;
-use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {

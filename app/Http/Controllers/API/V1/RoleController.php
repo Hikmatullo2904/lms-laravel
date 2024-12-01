@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\RoleCreateAction;
-use App\Http\Actions\RoleAddPermissionAction;
-use App\Http\Actions\RoleGetAllAction;
-use App\Http\Actions\RoleRemovePermissionAction;
-use App\Http\Requests\RoleAddPermissionRequest;
+use App\Actions\Role\RoleCreateAction;
+use App\Actions\Role\RoleAddPermissionAction;
+use App\Actions\Role\RoleGetAllAction;
+use App\Actions\Role\RoleRemovePermissionAction;
 use App\Http\Requests\RoleCrudPermissionRequest;
 use App\Http\Requests\RoleRequest;
 use App\Http\Resources\RoleCollection;
 use App\Http\Resources\RoleResource;
 use App\Models\Role;
-use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {

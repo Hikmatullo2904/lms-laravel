@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Actions;
+namespace App\Actions\User;
 
-use App\Models\User;
 use App\Repositories\UserRepository;
 
 class UserCreateAction {

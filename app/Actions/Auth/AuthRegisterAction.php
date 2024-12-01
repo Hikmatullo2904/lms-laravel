@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Actions;
+namespace App\Actions\Auth;
 
-use App\Http\Requests\UserRequest;
 use App\Repositories\UserRepository;
 
 class AuthRegisterAction {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Actions;
+namespace App\Actions\Role;
 
 use App\Models\Role;
 

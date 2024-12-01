@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Actions\UserCreateAction;
-use App\Http\Actions\UserDeleteAction;
-use App\Http\Actions\UserGetAllAction;
-use App\Http\Actions\UserUpdateAction;
+use App\Actions\User\UserCreateAction;
+use App\Actions\User\UserDeleteAction;
+use App\Actions\User\UserGetAllAction;
+use App\Actions\User\UserUpdateAction;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\ApiResponse;

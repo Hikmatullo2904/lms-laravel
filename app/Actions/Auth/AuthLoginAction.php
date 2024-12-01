@@ -1,10 +1,7 @@
 <?php
-namespace App\Http\Actions;
+namespace App\Actions\Auth;
 
 use App\Exceptions\CustomUnAuthorized;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
