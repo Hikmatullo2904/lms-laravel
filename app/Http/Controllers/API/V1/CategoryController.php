@@ -27,10 +27,16 @@ class CategoryController extends Controller
         return new CategoryCollection($this->categoryGetAllAction->handle());
     }
 
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\CategoryRequest  $request
+     * @param  int  $id
+     * @return \App\Http\Resources\ApiResponse
+     */
     public function update($id, CategoryRequest $request) {
-        //TODO fix the error
-        // echo $request->all();
-        // $this->categoryUpdateAction->handle($id, $request->validated());
-        // return new ApiResponse(null);
+        $this->categoryUpdateAction->handle($id, $request->validated());
+        return new ApiResponse(null);
     }
 }

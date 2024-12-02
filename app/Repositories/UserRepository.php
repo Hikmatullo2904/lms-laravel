@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserRepository {
+class UserRepository implements UserRepositoryInterface {
 
     public function getByEmail(string $email) {
         return User::where('email', $email)->first();

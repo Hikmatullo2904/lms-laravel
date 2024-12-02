@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\FileController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
@@ -39,5 +40,8 @@ Route::prefix('v1')->group(function () {
         Route::post('/categories', [CategoryController::class, 'create']);
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::put('/categories/{id}', [CategoryController::class, 'update']);
+
+        //Files
+        Route::post('/files', [FileController::class, 'upload']);
     });
 });

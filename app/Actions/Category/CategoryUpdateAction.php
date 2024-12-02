@@ -2,19 +2,23 @@
 namespace App\Actions\Category;
 
 use App\Models\Category;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryUpdateAction {
+
+
+    /**
+     * Update the specified category in storage.
+     *
+     * @param int $id The ID of the category to update.
+     * @param array $request The validated request data containing the 'name' and 'image' fields.
+     * @return void
+     */
     public function handle( $id, array $request) {
         $category = Category::findOrFail($id);
-        $url = $category->image;
-        if($request['image']) {
-            $url = Storage::disk('public')->putFile('categories', $request['image']);
-        }
 
         $category->update([
             'name' => $request['name'],
-            'image' => $url
+            'image' => $request['image']
         ]);
         
     }

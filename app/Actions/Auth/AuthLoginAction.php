@@ -2,15 +2,22 @@
 namespace App\Actions\Auth;
 
 use App\Exceptions\CustomUnAuthorized;
-use App\Repositories\UserRepository;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthLoginAction {
 
-    public function __construct(protected UserRepository $repository)
+    public function __construct(protected UserRepositoryInterface $repository)
     {}
     
+    /**
+     * Handles the authentication process for a user.
+     *
+     * @param array $request The request data containing 'email' and 'password'.
+     * @return string The generated API token for the authenticated user.
+     * @throws CustomUnAuthorized If authentication fails due to invalid credentials.
+     */
     public function handle(array $request) {
         $credentials = array_intersect_key($request, array_flip(['email', 'password']));
         $user = $this->repository->getByEmail($request['email']);

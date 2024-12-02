@@ -5,11 +5,11 @@ namespace App\Exceptions;
 use Exception;
 use Symfony\Component\HttpFoundation\Response;
 
-class CustomNotFoundException extends Exception
+class CustomBadRequestException extends Exception
 {
-    protected $code = Response::HTTP_NOT_FOUND;
+    protected $code = Response::HTTP_BAD_REQUEST;
 
-    protected $message = 'not found';
+    protected $message = 'bad request';
 
     public function __construct(string $message = null, int $code = null)
     {

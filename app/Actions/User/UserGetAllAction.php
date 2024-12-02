@@ -11,6 +11,14 @@ class UserGetAllAction {
         protected UserRepository $userRepository
     ) {}
 
+
+    
+    /**
+     * Handle the retrieval of all users.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\App\Models\User[]
+     */
     public function handle(Request $request) {
         return $this->userRepository->getAll($request);
     }
