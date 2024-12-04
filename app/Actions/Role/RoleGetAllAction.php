@@ -3,10 +3,15 @@
 namespace App\Actions\Role;
 
 use App\Models\Role;
+use App\Repositories\RoleRepositoryInterface;
 
 class RoleGetAllAction
 {
 
+
+    public function __construct(
+        public RoleRepositoryInterface $roleRepository
+    ) {}
     
     /**
      * Retrieve all roles.
@@ -14,6 +19,6 @@ class RoleGetAllAction
      * @return \Illuminate\Database\Eloquent\Collection|\App\Models\Role[]
      */
     public function handle() {
-        return Role::all();
+        return $this->roleRepository->all();
     }
 }

@@ -3,10 +3,14 @@
 namespace App\Actions\Category;
 
 use App\Models\Category;
+use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryCreateAction {
 
+    public function __construct(
+        public CategoryRepositoryInterface $categoryRepository
+    ){}
     
     /**
      * Create a new category and save it to storage.

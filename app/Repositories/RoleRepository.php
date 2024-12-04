@@ -4,9 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Role;
 
-class RoleRepository implements RoleRepositoryInterface
+class RoleRepository extends BaseRepository implements RoleRepositoryInterface
 {
-    public function create(array $request) {
-        
+    public function __construct(Role $model)
+    {
+        parent::__construct($model);
     }
 }

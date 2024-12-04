@@ -14,6 +14,12 @@ use Closure;
  */
 class BaseRepository implements BaseRepositoryInterface
 {
+
+
+    public function __construct(public Model $model)
+    {
+    }
+
     /**
      * @param  array  $columns
      * @param  array  $relations

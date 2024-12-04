@@ -3,10 +3,14 @@
 namespace App\Actions\Permission;
 
 use App\Models\Permission;
+use App\Repositories\PermissionRepositoryInterface;
 
 class PermissionGetAllAction 
 {
 
+    public function __construct(
+        public PermissionRepositoryInterface $permissionRepository
+    ) {}
     
     /**
      * Return all permissions.
@@ -14,6 +18,6 @@ class PermissionGetAllAction
      * @return \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[]
      */
     public function handle() {
-        return Permission::all();
+        return $this->permissionRepository->all();
     }
 }

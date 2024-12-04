@@ -14,10 +14,10 @@ class UserCreateAction {
     /**
      * Handles the creation of a new user.
      *
-     * @param array $request The validated request data containing user attributes.
+     * @param array $data The validated request data containing user attributes.
      * @return \App\Models\User The newly created user.
      */
-    public function handle(array $request) {
-        return $this->userRepository->create($request);
+    public function handle(array $data) {
+        return $this->userRepository->create($data);
     }
 }

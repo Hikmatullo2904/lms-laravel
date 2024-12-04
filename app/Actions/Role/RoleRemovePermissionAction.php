@@ -2,25 +2,24 @@
 
 namespace App\Actions\Role;
 
-use App\Models\Permission;
-use App\Models\Role;
+use App\Repositories\RoleRepositoryInterface;
 
 class RoleRemovePermissionAction
 {
 
+    public function __construct(
+        public RoleRepositoryInterface $roleRepository,
+    ) {}
     
     /**
      * Handle the incoming request to remove permissions from a role.
      *
      * @param int $id The id of the role.
-     * @param array $request The validated request data containing 'permissions'.
+     * @param array $data The validated request data containing 'permissions'.
      * @return void
      */
-    public function handle($id, array $request) {
-        $role = Role::findOrFail($id);
-        foreach($request['permissions'] as $permission) {
-            $permission = Permission::findOrFail($permission);
-            $role->permissions()->detach($permission);
-        }
+    public function handle($id, array $data) {
+        $role = $this->roleRepository->findById($id);
+        $role->permissions()->detach($data['permissions']);
     }
 }
