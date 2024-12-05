@@ -7,6 +7,7 @@ use App\Models\User;
 class UserDeleteAction {
 
     
+    
     /**
      * Handles the deletion of a user.
      *

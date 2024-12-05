@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\CourseController;
 use App\Http\Controllers\API\V1\FileController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
@@ -43,5 +44,11 @@ Route::prefix('v1')->group(function () {
 
         //Files
         Route::post('/files', [FileController::class, 'upload']);
+
+        //Courses
+        Route::post('/courses', [CourseController::class, 'create']);
+        Route::get('/courses', [CourseController::class, 'index']);
+        Route::put('/courses/{id}', [CourseController::class, 'update']);
+        Route::get('/courses/mentor', [CourseController::class, 'getMentorCourses']);
     });
 });
