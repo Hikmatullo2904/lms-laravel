@@ -2,7 +2,7 @@
 
 namespace App\Actions\Role;
 
-use App\Repositories\RoleRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 
 class RoleRemovePermissionAction
 {

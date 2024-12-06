@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Impl;
 
 use App\Models\Role;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 
 class RoleRepository extends BaseRepository implements RoleRepositoryInterface
 {

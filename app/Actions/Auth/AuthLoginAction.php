@@ -2,7 +2,7 @@
 namespace App\Actions\Auth;
 
 use App\Exceptions\CustomUnAuthorized;
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 

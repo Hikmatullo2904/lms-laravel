@@ -2,13 +2,13 @@
 
 namespace App\Actions\User;
 
-use App\Repositories\UserRepository;
+use App\Repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class UserGetAllAction {
 
     public function __construct(
-        protected UserRepository $userRepository
+        protected UserRepositoryInterface $userRepository
     ) {}
 
 

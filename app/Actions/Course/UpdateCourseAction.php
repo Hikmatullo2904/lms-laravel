@@ -2,7 +2,7 @@
 
 namespace App\Actions\Course;
 
-use App\Repositories\CourseRepositoryInterface;
+use App\Repositories\Contracts\CourseRepositoryInterface;
 
 class UpdateCourseAction
 {

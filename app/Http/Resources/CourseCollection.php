@@ -20,13 +20,16 @@ class CourseCollection extends ResourceCollection
             'data' => $this->collection->transform(function ($course) {
                 return [
                     'id' => $course->id,
-                    'title' => $course->name,
+                    'title' => $course->title,
                     'description' => $course->description,
+                    'languages' => $course->languages,
+                    'price' => $course->price,
                     'category' => [
                         'id' => $course->category->id,
                         'name' => $course->category->name,
-                        'image' => $course->category->image
-                    ]
+                        'image' => $course->category ? asset('storage/' . $course->category->image) : null
+                    ],
+                    'image' => $course->image ? asset('storage/' . $course->image) : null
                 ];
             })
         ];

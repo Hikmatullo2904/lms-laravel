@@ -1,8 +1,7 @@
 <?php
 namespace App\Actions\Category;
 
-use App\Models\Category;
-use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 
 class CategoryUpdateAction {
 
@@ -17,7 +16,7 @@ class CategoryUpdateAction {
      * @param array $data The validated request data containing the 'name' and 'image' fields.
      * @return void
      */
-    public function handle( $id, array $data) {
+    public function handle(int $id, array $data) : void {
         $this->categoryRepository->update($id, $data);
     }
 }

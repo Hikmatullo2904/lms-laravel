@@ -3,7 +3,7 @@
 namespace App\Actions\Category;
 
 use App\Models\Category;
-use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryCreateAction {

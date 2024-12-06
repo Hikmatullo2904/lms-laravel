@@ -2,8 +2,7 @@
 
 namespace App\Actions\Course;
 
-use App\Models\Course;
-use App\Repositories\CourseRepositoryInterface;
+use App\Repositories\Contracts\CourseRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class GetAllCursesAction {

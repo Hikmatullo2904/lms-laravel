@@ -2,11 +2,11 @@
 
 namespace App\Actions\Auth;
 
-use App\Repositories\UserRepository;
+use App\Repositories\Contracts\UserRepositoryInterface;
 
 class AuthRegisterAction {
 
-    public function __construct(protected UserRepository $repository)
+    public function __construct(protected UserRepositoryInterface $repository)
     {}
     
     

@@ -1,10 +1,7 @@
 <?php
 namespace App\Actions\Role;
 
-use App\Models\Permission;
-use App\Models\Role;
-use App\Repositories\PermissionRepositoryInterface;
-use App\Repositories\RoleRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 
 class RoleAddPermissionAction {
 

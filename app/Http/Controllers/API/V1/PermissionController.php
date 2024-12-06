@@ -14,11 +14,22 @@ class PermissionController extends Controller
         protected PermissionGetAllAction $permissionGetAllAction
     ){}
 
+    /**
+     * Create a new permission.
+     *
+     * @param \App\Http\Requests\PermissionRequest $request
+     * @return \App\Http\Resources\ApiResponse
+     */
     public function create(PermissionRequest $request) {
         $this->permissionCreateAction->handle($request->validated());
         return new ApiResponse(null);
     }
 
+    /**
+     * Retrieve a list of all permissions.
+     *
+     * @return \App\Http\Resources\ApiResponse
+     */
     public function index() {
         return new ApiResponse($this->permissionGetAllAction->handle());
     }

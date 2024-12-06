@@ -12,7 +12,13 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    protected function casts() : array{
+        return [
+            'languages' => 'array',
+        ];
+    }
 
     public function sections() : HasMany {
         return $this->hasMany(CourseSection::class);

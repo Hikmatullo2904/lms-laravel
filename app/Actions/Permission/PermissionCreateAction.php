@@ -2,7 +2,7 @@
 
 namespace App\Actions\Permission;
 
-use App\Repositories\PermissionRepositoryInterface;
+use App\Repositories\Contracts\PermissionRepositoryInterface;
 
 class PermissionCreateAction {
 

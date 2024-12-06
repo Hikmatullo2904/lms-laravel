@@ -3,14 +3,14 @@
 namespace App\Actions\User;
 
 use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Repositories\Contracts\UserRepositoryInterface;
 
 class UserUpdateAction
 {
 
 
     public function __construct(
-       protected UserRepository $userRepository
+       protected UserRepositoryInterface $userRepository
     ){}
 
 

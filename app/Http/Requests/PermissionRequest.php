@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PermissionRequest extends FormRequest
 {
+    use FailedValidation;
     
     public function authorize(): bool
     {

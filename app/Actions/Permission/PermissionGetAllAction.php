@@ -3,7 +3,7 @@
 namespace App\Actions\Permission;
 
 use App\Models\Permission;
-use App\Repositories\PermissionRepositoryInterface;
+use App\Repositories\Contracts\PermissionRepositoryInterface;
 
 class PermissionGetAllAction 
 {

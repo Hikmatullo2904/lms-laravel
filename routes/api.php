@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\CourseController;
+use App\Http\Controllers\API\V1\CourseSectionController;
 use App\Http\Controllers\API\V1\FileController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
@@ -50,5 +51,9 @@ Route::prefix('v1')->group(function () {
         Route::get('/courses', [CourseController::class, 'index']);
         Route::put('/courses/{id}', [CourseController::class, 'update']);
         Route::get('/courses/mentor', [CourseController::class, 'getMentorCourses']);
+        Route::get('/courses/{id}', [CourseController::class, 'show']);
+
+        //Course Sections
+        Route::post('/course-sections', [CourseSectionController::class, 'create']);
     });
 });

@@ -20,23 +20,55 @@ class RoleController extends Controller
         protected RoleRemovePermissionAction $roleRemovePermissionAction,
         protected RoleGetAllAction $roleGetAllAction
     ){}
+    /**
+     * Create a new role with the specified attributes.
+     *
+     * @param RoleRequest $request The request containing the validated role data.
+     * @return void
+     */
     public function create(RoleRequest $request) {
        $this->roleAddAction->handle($request->validated());
     }
 
-    public function addPermission($id, RoleCrudPermissionRequest $request) {
+    /**
+     * Add permissions to a role.
+     *
+     * @param int $id The id of the role.
+     * @param RoleCrudPermissionRequest $request The validated request data containing 'permissions'.
+     * @return void
+     */
+    public function addPermission(int $id, RoleCrudPermissionRequest $request) {
         $this->roleAddPermissionAction->handle($id, $request->validated());
     }
 
-    public function removePermission($id, RoleCrudPermissionRequest $request) {
+    /**
+     * Remove permissions from a role.
+     *
+     * @param int $id The id of the role.
+     * @param RoleCrudPermissionRequest $request The validated request data containing 'permissions'.
+     * @return void
+     */
+    public function removePermission(int $id, RoleCrudPermissionRequest $request) {
         $this->roleRemovePermissionAction->handle($id, $request->validated());
     }
 
+
+    /**
+     * Return a list of all roles.
+     *
+     * @return \App\Http\Resources\RoleCollection
+     */
     public function index() {
         return new RoleCollection($this->roleGetAllAction->handle());
     }
 
-    public function show($id) {
+    /**
+     * Get a role by the specified id.
+     *
+     * @param int $id The id of the role.
+     * @return \App\Http\Resources\RoleResource
+     */
+    public function show(int $id) {
         return new RoleResource(Role::findOrFail($id));
     }
 

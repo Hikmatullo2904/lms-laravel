@@ -2,10 +2,7 @@
 
 namespace App\Actions\Role;
 
-use App\Http\Requests\RoleRequest;
-use App\Models\Permission;
-use App\Models\Role;
-use App\Repositories\RoleRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 
 class RoleCreateAction 
 {
