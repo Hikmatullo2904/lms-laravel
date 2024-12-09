@@ -27,7 +27,7 @@ class CourseResource extends JsonResource
                 'category' => [
                     'id' => $this->category->id,
                     'name' => $this->category->name,
-                    'image' => $this->category ? asset('storage/' . $this->category->image) : null
+                    'image' => new ImageResource($this->category->image)
                 ],
                 'sections' => CourseSectionResource::collection($this->sections),
             ]

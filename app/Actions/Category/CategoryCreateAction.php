@@ -18,7 +18,7 @@ class CategoryCreateAction {
      * @param array $request The validated request data containing the 'name' and 'image' fields.
      * @return \App\Models\Category The newly created category.
      */
-    public function handle(array $request) {
+    public function handle(array $request ) : Category {
         $url = null;
         if($request['image']) {
             $url = Storage::disk('public')->putFile('files', $request['image']);

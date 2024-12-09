@@ -15,11 +15,23 @@ class AuthController extends Controller
         protected AuthRegisterAction $registerAction
     ) {}
 
+    /**
+     * Handle a login request for the application.
+     *
+     * @param LoginRequest $request The request containing the validated user credentials.
+     * @return \App\Http\Resources\ApiResponse
+     */
     public function login(LoginRequest $request){
         $token = $this->loginAction->handle($request->validated());
         return new ApiResponse($token);
     }
 
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param UserRequest $request The request containing the validated user data.
+     * @return \App\Http\Resources\ApiResponse
+     */
     public function register(UserRequest $request){
         $user = $this->registerAction->handle($request->validated());
         if(!$user){

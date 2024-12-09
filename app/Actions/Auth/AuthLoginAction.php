@@ -18,7 +18,7 @@ class AuthLoginAction {
      * @return string The generated API token for the authenticated user.
      * @throws CustomUnAuthorized If authentication fails due to invalid credentials.
      */
-    public function handle(array $request) {
+    public function handle(array $request) : string {
         $credentials = array_intersect_key($request, array_flip(['email', 'password']));
         $user = $this->repository->getByEmail($request['email']);
         if (!Auth::attempt($credentials)) {

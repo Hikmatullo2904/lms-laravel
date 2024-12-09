@@ -13,8 +13,6 @@ class UserUpdateAction
        protected UserRepositoryInterface $userRepository
     ){}
 
-
-
     
     /**
      * Handles the update of an existing user.
@@ -23,7 +21,7 @@ class UserUpdateAction
      * @param array $request The validated request data containing user attributes.
      * @return User The updated user instance.
      */
-    public function handle(User $user, array $request) {
+    public function handle(User $user, array $request) : User {
         return $this->userRepository->update($user, $request);
     }
 }

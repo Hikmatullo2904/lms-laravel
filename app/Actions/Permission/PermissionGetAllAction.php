@@ -4,6 +4,7 @@ namespace App\Actions\Permission;
 
 use App\Models\Permission;
 use App\Repositories\Contracts\PermissionRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class PermissionGetAllAction 
 {
@@ -17,7 +18,7 @@ class PermissionGetAllAction
      *
      * @return \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[]
      */
-    public function handle() {
+    public function handle() : Collection {
         return $this->permissionRepository->all();
     }
 }

@@ -17,7 +17,7 @@ class RoleCreateAction
      * @param array $data The validated request data containing 'name' and 'permissions'.
      * @return void
      */
-    public function handle(array $data) {
+    public function handle(array $data) : void {
         $role = $this->roleRepository->create($data);
         $role->permissions()->attach($data['permissions']);
     }

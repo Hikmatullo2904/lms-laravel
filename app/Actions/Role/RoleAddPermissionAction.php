@@ -16,7 +16,7 @@ class RoleAddPermissionAction {
      * @param array $data
      * @return void
      */
-    public function handle($id, array $data) {
+    public function handle($id, array $data) : void {
         $role = $this->roleRepository->findById($id);
         $role->permissions()->attach($data['permissions']);
     }

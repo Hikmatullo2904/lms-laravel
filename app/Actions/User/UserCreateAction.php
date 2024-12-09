@@ -2,6 +2,7 @@
 
 namespace App\Actions\User;
 
+use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
 
 class UserCreateAction {
@@ -17,7 +18,7 @@ class UserCreateAction {
      * @param array $data The validated request data containing user attributes.
      * @return \App\Models\User The newly created user.
      */
-    public function handle(array $data) {
+    public function handle(array $data) : User {
         return $this->userRepository->create($data);
     }
 }

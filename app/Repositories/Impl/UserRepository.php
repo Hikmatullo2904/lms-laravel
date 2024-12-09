@@ -12,9 +12,7 @@ class UserRepository implements UserRepositoryInterface {
         return User::where('email', $email)->first();
     }
 
-    public function getAll(Request $request) {
-        $page = $request->input('page', 1); 
-        $size = $request->input('size', 10); 
+    public function getAll(int $page, int $size) {
         $users = User::query()->paginate($size, ['*'], 'page', $page);
         return $users;
     }

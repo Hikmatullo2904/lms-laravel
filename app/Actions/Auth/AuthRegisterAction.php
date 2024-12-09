@@ -2,6 +2,7 @@
 
 namespace App\Actions\Auth;
 
+use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
 
 class AuthRegisterAction {
@@ -17,7 +18,7 @@ class AuthRegisterAction {
      * @return \App\Models\User The newly registered user.
      * @throws \Illuminate\Validation\ValidationException If validation fails.
      */
-    public function handle(array $request) {
+    public function handle(array $request) : User {
         return $this->repository->create($request);
     }
 

@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\CourseReviewRepositoryInterface;
 use App\Repositories\Contracts\CourseSectionRepositoryInterface;
+use App\Repositories\Contracts\LessonRepositoryInterface;
 use App\Repositories\Impl\CategoryRepository;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Impl\CourseRepository;
 use App\Repositories\Contracts\CourseRepositoryInterface;
+use App\Repositories\Impl\CourseReviewRepository;
 use App\Repositories\Impl\CourseSectionRepository;
+use App\Repositories\Impl\LessonRepository;
 use App\Repositories\Impl\PermissionRepository;
 use App\Repositories\Contracts\PermissionRepositoryInterface;
 use App\Repositories\Impl\RoleRepository;
@@ -29,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
         $this->app->bind(CourseRepositoryInterface::class, CourseRepository::class);
         $this->app->bind(CourseSectionRepositoryInterface::class, CourseSectionRepository::class);
+        $this->app->bind(LessonRepositoryInterface::class, LessonRepository::class);
+        $this->app->bind(CourseReviewRepositoryInterface::class, CourseReviewRepository::class);
     }
 
     /**

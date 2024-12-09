@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LessonResource extends JsonResource
+class VideoResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,8 @@ class LessonResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'video' => new VideoResource($this->video),
-            'priority' => $this->priority,
-            'duration' => $this->duration
+            'file' => $this->resource ? $this->resource : null,
+            'url' => $this->resource ? asset('storage/' . $this->resource) : null
         ];
     }
 }

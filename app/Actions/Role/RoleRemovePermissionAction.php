@@ -18,7 +18,7 @@ class RoleRemovePermissionAction
      * @param array $data The validated request data containing 'permissions'.
      * @return void
      */
-    public function handle($id, array $data) {
+    public function handle($id, array $data) : void {
         $role = $this->roleRepository->findById($id);
         $role->permissions()->detach($data['permissions']);
     }

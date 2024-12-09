@@ -2,6 +2,7 @@
 
 namespace App\Actions\Course;
 
+use App\Models\Course;
 use App\Repositories\Contracts\CourseRepositoryInterface;
 
 class GetCourseAction {
@@ -16,7 +17,7 @@ class GetCourseAction {
      * @param int $id The ID of the course to retrieve.
      * @return \App\Models\Course|null
      */
-    public function handle(int $id) {
+    public function handle(int $id) : Course {
         return $this->courseRepository->findById($id);
     }
 }

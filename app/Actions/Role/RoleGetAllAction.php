@@ -3,6 +3,7 @@
 namespace App\Actions\Role;
 
 use App\Repositories\Contracts\RoleRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class RoleGetAllAction
 {
@@ -17,7 +18,7 @@ class RoleGetAllAction
      *
      * @return \Illuminate\Database\Eloquent\Collection|\App\Models\Role[]
      */
-    public function handle() {
+    public function handle() : Collection {
         return $this->roleRepository->all();
     }
 }

@@ -17,7 +17,7 @@ class AddCourseSectionAction
      * @param array $data The validated request data containing course section attributes.
      * @return void
      */
-    public function handle(array $data) {
+    public function handle(array $data) : void {
         $this->courseSectionRepository->create($data);
     }
 }

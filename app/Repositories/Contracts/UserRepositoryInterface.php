@@ -9,7 +9,7 @@ interface UserRepositoryInterface
 {
     public function getByEmail(string $email);
 
-    public function getAll(Request $request);
+    public function getAll(int $page, int $size);
 
     public function create(array $request);
 

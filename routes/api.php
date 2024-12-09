@@ -5,9 +5,11 @@ use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\CourseController;
 use App\Http\Controllers\API\V1\CourseSectionController;
 use App\Http\Controllers\API\V1\FileController;
+use App\Http\Controllers\API\V1\LessonController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
+use App\Http\Controllers\API\V1\CourseReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,5 +57,14 @@ Route::prefix('v1')->group(function () {
 
         //Course Sections
         Route::post('/course-sections', [CourseSectionController::class, 'create']);
+        Route::put('/course-sections/{id}', [CourseSectionController::class, 'update']);
+
+        //Lesson
+        Route::post('/lessons', [LessonController::class, 'create']);
+        Route::put('/lessons/{id}', [LessonController::class, 'update']);
+
+        //Reviews
+        Route::post('/reviews', [CourseReviewController::class, 'create']);
+        Route::get('/reviews/{course_id}', [CourseReviewController::class, 'getCourseReviews']);
     });
 });

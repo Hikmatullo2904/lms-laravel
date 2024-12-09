@@ -14,7 +14,7 @@ class UploadFileAction
      * @param  Request  $request
      * @return string
      */
-    public function handle(Request $request) {
+    public function handle(Request $request) : string {
         return Storage::disk('public')->putFile('files', $request->file('file'));
     }
 }

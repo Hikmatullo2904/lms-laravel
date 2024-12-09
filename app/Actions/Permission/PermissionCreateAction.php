@@ -16,7 +16,7 @@ class PermissionCreateAction {
      * @param array $data The validated request data containing permission attributes.
      * @return void
      */
-    public function handle(array $data) {
+    public function handle(array $data) : void {
         $this->permissionRepository->create($data);
     }
 }

@@ -55,7 +55,9 @@ class UserController extends Controller
      * @return \App\Http\Resources\UserCollection
      */
     public function index(Request $request) {
-        return new UserCollection($this->userGetAllAction->handle($request));
+        $page = $request->input('page', 1);
+        $size = $request->input('size', 10);
+        return new UserCollection($this->userGetAllAction->handle($page, $size));
     }
 
     /**

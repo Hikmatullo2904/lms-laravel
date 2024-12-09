@@ -14,7 +14,7 @@ class UserDeleteAction {
      * @param User $user The user instance to be deleted.
      * @return bool|null True if the deletion was successful, null otherwise.
      */
-    public function handle(User $user) {
+    public function handle(User $user) : ?bool {
         return $user->delete();
     }
 }
