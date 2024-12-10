@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\AuthController;
 use App\Http\Controllers\API\V1\CategoryController;
+use App\Http\Controllers\API\V1\ChatController;
 use App\Http\Controllers\API\V1\CourseController;
 use App\Http\Controllers\API\V1\CourseSectionController;
 use App\Http\Controllers\API\V1\FileController;
@@ -66,5 +67,12 @@ Route::prefix('v1')->group(function () {
         //Reviews
         Route::post('/reviews', [CourseReviewController::class, 'create']);
         Route::get('/reviews/{course_id}', [CourseReviewController::class, 'getCourseReviews']);
+
+        //Chat
+        Route::post('/chats', [ChatController::class, 'create']);
+        Route::get('/chats', [ChatController::class, 'getUserChats']);
+        Route::get('/chats/{id}', [ChatController::class, 'getChatMessages']);
+        Route::put('/chats/{id}', [ChatController::class, 'updateMessage']);
+        Route::delete('/chats/{id}', [ChatController::class, 'deleteMessage']);
     });
 });
