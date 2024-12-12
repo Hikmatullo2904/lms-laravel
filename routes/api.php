@@ -7,6 +7,7 @@ use App\Http\Controllers\API\V1\CourseController;
 use App\Http\Controllers\API\V1\CourseSectionController;
 use App\Http\Controllers\API\V1\FileController;
 use App\Http\Controllers\API\V1\LessonController;
+use App\Http\Controllers\API\V1\OrderController;
 use App\Http\Controllers\API\V1\PermissionController;
 use App\Http\Controllers\API\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
@@ -74,5 +75,12 @@ Route::prefix('v1')->group(function () {
         Route::get('/chats/{id}', [ChatController::class, 'getChatMessages']);
         Route::put('/chats/{id}', [ChatController::class, 'updateMessage']);
         Route::delete('/chats/{id}', [ChatController::class, 'deleteMessage']);
+
+        //Order
+        Route::post('/orders', [OrderController::class, 'create']);
+        Route::get('/orders/student', [OrderController::class, 'userOrders']);
+        Route::get('/orders', [OrderController::class, 'getOrders']);
+        Route::post('/orders/{id}/pay', [OrderController::class, 'pay']);
+        Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
     });
 });

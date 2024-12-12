@@ -80,5 +80,10 @@ class CourseController extends Controller
         return new CourseResource($this->getCourseAction->handle($id));
     }
 
+    public function getStudentCourses() {
+
+    }
+    
+
     
 }
