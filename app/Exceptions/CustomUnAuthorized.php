@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Exceptions;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Exception;
@@ -16,7 +17,13 @@ class CustomUnAuthorized extends Exception
         parent::__construct($message ?? $this->message, $code ?? $this->code);
     }
 
-    public function render($request)
+    /**
+     * Render the exception as an HTTP response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function render(Request $request) : Response
     {
         return response()->json([
             'success' => false,

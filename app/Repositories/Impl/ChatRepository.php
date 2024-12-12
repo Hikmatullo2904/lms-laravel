@@ -17,10 +17,10 @@ class ChatRepository extends BaseRepository implements ChatRepositoryInterface
      * Saves a given chat.
      *
      * @param Chat $chat
-     * @return Chat
+     * @return null
      */
-    public function save(Chat $chat) : Chat {
-        return $this->save($chat);
+    public function save(Chat $chat) : void {
+        $chat->save();
     }
 
     /**

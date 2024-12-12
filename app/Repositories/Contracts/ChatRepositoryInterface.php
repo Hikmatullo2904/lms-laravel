@@ -11,9 +11,9 @@ interface ChatRepositoryInterface extends BaseRepositoryInterface
      * Saves a given chat.
      *
      * @param Chat $chat
-     * @return Chat
+     * @return null
      */
-    public function save(Chat $chat) : Chat;
+    public function save(Chat $chat) : void;
 
     /**
      * Finds a chat by its receiver and sender ids.

@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\ChatMessage;
 use App\Repositories\Contracts\ChatMessageRepositoryInterface;
 use App\Repositories\Contracts\ChatRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class AddChatMessageAction
 {
@@ -29,21 +30,25 @@ class AddChatMessageAction
         $chat_id = $data['chat_id'];
         $chat = null;
         if($chat_id == null) {
-            $chat = $this->chatRepository->findByReceiverAndSender($data['receiver_id'], $data['sender_id']);
+            $chat = $this->chatRepository->findByReceiverAndSender($data['receiver_id'], Auth::id());
             if($chat == null) {
                 $chat = new Chat();
-                $chat->sender_id = $data['sender_id'];
+                $chat->sender_id = Auth::id();
+                $chat->last_message_at = now();
                 $chat->receiver_id = $data['receiver_id'];
-                $chat = $this->chatRepository->save($chat);
+                $this->chatRepository->save($chat);
             }
         }else{
             $chat = $this->chatRepository->findById($chat_id);
         }
 
+        $chat->last_message_at = now();
+
         $chatMessage = new ChatMessage();
         $chatMessage->chat_id = $chat->id;
         $chatMessage->message = $data['message'];
-        $chatMessage->sender_id = $data['sender_id'];
+        $chatMessage->sender_id = Auth::id();
         $this->chatMessageRepository->save($chatMessage);
+        $this->chatRepository->save($chat);
     }
 }

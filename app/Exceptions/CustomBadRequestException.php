@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CustomBadRequestException extends Exception
@@ -16,7 +17,13 @@ class CustomBadRequestException extends Exception
         parent::__construct($message ?? $this->message, $code ?? $this->code);
     }
 
-    public function render($request)
+    /**
+     * Render the exception as an HTTP response.
+     *
+     * @param \Illuminate\Http\Request $request The incoming request.
+     * @return \Symfony\Component\HttpFoundation\Response The HTTP response in JSON format.
+     */
+    public function render(Request $request): Response
     {
         return response()->json([
             'success' => false,

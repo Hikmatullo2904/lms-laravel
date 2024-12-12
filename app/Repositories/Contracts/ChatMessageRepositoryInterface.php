@@ -12,9 +12,9 @@ interface ChatMessageRepositoryInterface extends BaseRepositoryInterface
      *
      * @param ChatMessage $chatMessage
      *
-     * @return ChatMessage
+     * @return void
      */
-    public function save(ChatMessage $chatMessage) : ChatMessage;
+    public function save(ChatMessage $chatMessage) : void;
 
     public function findAllByChatId(int $chat_id): Collection;
 }

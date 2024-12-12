@@ -15,9 +15,13 @@ class ChatMessageCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'message' => $this->message,
-            'sender_id' => $this->sender_id
+            $this->collection->transform(function ($message) {
+                return [
+                    'id' => $message->id,
+                    'message' => $message->message,
+                    'sender_id' => $message->sender_id
+                ];
+            })
         ];
     }
 }

@@ -18,10 +18,10 @@ class ChatMessageRepository extends BaseRepository implements ChatMessageReposit
      *
      * @param ChatMessage $chatMessage
      *
-     * @return ChatMessage
+     * @return void
      */
-    public function save(ChatMessage $chatMessage) : ChatMessage {
-        return $this->save($chatMessage);
+    public function save(ChatMessage $chatMessage) : void {
+        $chatMessage->save();
     }
 
     public function findAllByChatId(int $chat_id) : Collection {

@@ -22,10 +22,9 @@ class ChatRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sender_id' => 'required|exists:users,id',
             'receiver_id' => 'required|exists:users,id',
             'message' => 'required|string',
-            'chat_id' => 'integer'
+            'chat_id' => 'integer|nullable'
         ];
     }
 }
