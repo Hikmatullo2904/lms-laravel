@@ -19,7 +19,8 @@ class LessonResource extends JsonResource
             'title' => $this->title,
             'video' => new VideoResource($this->video),
             'priority' => $this->priority,
-            'duration' => $this->duration
+            'duration' => $this->duration,
+            "image" => $this->image ? asset('storage/' . $this->image) : null
         ];
     }
 }

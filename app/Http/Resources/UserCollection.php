@@ -24,7 +24,8 @@ class UserCollection extends ResourceCollection
                   'last_name' => $user->last_name,
                   'username' => $user->username,
                   'email' => $user->email,
-                  'image' => $user->image
+                  'image' => $user->image,
+                  'role_name' => $user->role_name
                 ];
             }),
             'pagination' => [

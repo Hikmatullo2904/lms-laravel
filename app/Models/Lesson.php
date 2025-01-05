@@ -22,4 +22,6 @@ class Lesson extends Model
         return $this->belongsTo(CourseSection::class);
     }
 
+
+
 }

@@ -7,10 +7,12 @@ use App\Actions\Order\GetAllOrdersAction;
 use App\Actions\Order\GetOrderAction;
 use App\Actions\Order\GetUserOrdersAction;
 use App\Actions\Order\PayOrderAction;
+use App\Exceptions\CustomBadRequestException;
 use App\Http\Requests\OrderPaymentRequest;
 use App\Http\Resources\ApiResponse;
 use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -30,8 +32,12 @@ class OrderController extends Controller
      * @param int $course_id The ID of the course to create the order for.
      * @return ApiResponse The response containing the ID of the created order.
      */
-    public function create(int $course_id): ApiResponse
+    public function create(Request $request): ApiResponse
     {
+        $course_id = $request->get("course_id");
+        if ($course_id === null) {
+            throw new CustomBadRequestException();
+        }
         $order_id = $this->createOrderAction->handle($course_id);
         return new ApiResponse($order_id);
     }

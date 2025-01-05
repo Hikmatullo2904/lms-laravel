@@ -56,6 +56,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/courses', [CourseController::class, 'index']);
         Route::put('/courses/{id}', [CourseController::class, 'update']);
         Route::get('/courses/mentor', [CourseController::class, 'getMentorCourses']);
+        Route::get('/courses/my', [CourseController::class, 'getStudentCourses']);
         Route::get('/courses/{id}', [CourseController::class, 'show']);
 
         //Course Sections
@@ -65,6 +66,7 @@ Route::prefix('v1')->group(function () {
         //Lesson
         Route::post('/lessons', [LessonController::class, 'create']);
         Route::put('/lessons/{id}', [LessonController::class, 'update']);
+        Route::get('/lessons/{id}', [LessonController::class, 'getById']);
 
         //Reviews
         Route::post('/reviews', [CourseReviewController::class, 'create']);
@@ -81,7 +83,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/orders', [OrderController::class, 'create']);
         Route::get('/orders/student', [OrderController::class, 'userOrders']);
         Route::get('/orders', [OrderController::class, 'getOrders']);
-        Route::post('/orders/{id}/pay', [OrderController::class, 'pay']);
+        Route::post('/orders/pay', [OrderController::class, 'pay']);
         Route::get('/orders/{id}', [OrderController::class, 'getOrder']);
     });
 });

@@ -14,6 +14,18 @@ class CourseRepository extends BaseRepository implements CourseRepositoryInterfa
         parent::__construct($model);
     }
 
+    /**
+     * Retrieve a list of courses. If given, the list will be filtered by the
+     * provided parameters.
+     *
+     * @param array $params The parameters to filter by. Valid keys are:
+     *     - user_id: The ID of the user who created the course.
+     *     - category_id: The ID of the category.
+     *     - size: The page size.
+     *     - page: The page number to retrieve.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function getCourses(array $params = []): Collection
     {
         $query = $this->model
@@ -34,6 +46,23 @@ class CourseRepository extends BaseRepository implements CourseRepositoryInterfa
             ->skip(($params['page'] - 1) * $params['size'])
             ->take($params['size'])
             ->get();
+    }
+
+    /**
+     * Retrieve a list of courses belonging to the given student.
+     *
+     * @param int $student_id The ID of the student whose courses are to be retrieved.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection A collection of the student's courses.
+     */
+    public function getStudentCourses(int $student_id) : Collection 
+    {
+        $boughtCourses = Course::whereHas('orders', function ($query) use ($student_id) {
+            $query->where('student_id', $student_id)
+                  ->where('status', 'paid');
+        })->get();
+    
+        return $boughtCourses;
     }
 
 }

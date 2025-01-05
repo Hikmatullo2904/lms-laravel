@@ -21,24 +21,65 @@ class Course extends Model
         ];
     }
 
+    /**
+     * Get the user that owns the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() : BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the sections that belong to the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function sections(): HasMany
     {
         return $this->hasMany(CourseSection::class);
     }
 
+    /**
+     * Get the lessons that belong to the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function lessons(): HasManyThrough
     {
         return $this->HasManyThrough(Lesson::class, CourseSection::class);
     }
 
+    
+    /**
+     * Get the category that owns the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-
+    
+    /**
+     * Get the course reviews that belong to the Course.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function course_reviews(): HasMany
     {
         return $this->hasMany(CourseReview::class);
+    }
+
+    /**
+     * Get the orders that belong to the Course.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

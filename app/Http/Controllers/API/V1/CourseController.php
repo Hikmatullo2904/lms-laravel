@@ -6,6 +6,7 @@ use App\Actions\Course\AddCourseAction;
 use App\Actions\Course\GetAllCursesAction;
 use App\Actions\Course\GetCourseAction;
 use App\Actions\Course\GetMentorCoursesAction;
+use App\Actions\Course\GetStudentCourseAction;
 use App\Actions\Course\UpdateCourseAction;
 use App\Http\Requests\CourseRequest;
 use App\Http\Requests\GetCoursesRequest;
@@ -22,7 +23,8 @@ class CourseController extends Controller
         public UpdateCourseAction $updateCourseAction,
         public GetAllCursesAction $getAllCursesAction,
         public GetMentorCoursesAction $getMentorCoursesAction,
-        public GetCourseAction $getCourseAction
+        public GetCourseAction $getCourseAction,
+        public GetStudentCourseAction $getStudentCourseAction
     ) {
     }
 
@@ -89,9 +91,15 @@ class CourseController extends Controller
         return new CourseResource($this->getCourseAction->handle($id));
     }
 
-    public function getStudentCourses()
+    /**
+     * Retrieve a list of courses for the authenticated student.
+     * 
+     * @return \App\Http\Resources\CourseCollection A collection of the student's courses.
+     */
+    public function getStudentCourses() : CourseCollection
     {
-
+        $student_id = Auth::id();
+        return new CourseCollection($this->getStudentCourseAction->handle($student_id));
     }
 
 
