@@ -16,7 +16,8 @@ class CategoryController extends Controller
         public CategoryCreateAction $categoryCreateAction,
         public CategoryGetAllAction $categoryGetAllAction,
         public CategoryUpdateAction $categoryUpdateAction
-    ){}
+    ) {
+    }
 
     /**
      * Create a new category in the database.
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      * @param \App\Http\Requests\CategoryRequest $request
      * @return \App\Http\Resources\ApiResponse
      */
-    public function create(CategoryRequest $request) {
+    public function create(CategoryRequest $request): ApiResponse
+    {
         $this->categoryCreateAction->handle($request->validated());
         return new ApiResponse(null);
     }
@@ -34,11 +36,12 @@ class CategoryController extends Controller
      *
      * @return \App\Http\Resources\CategoryCollection
      */
-    public function index() {
+    public function index(): CategoryCollection
+    {
         return new CategoryCollection($this->categoryGetAllAction->handle());
     }
 
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -46,7 +49,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \App\Http\Resources\ApiResponse
      */
-    public function update( $id, CategoryRequest $request) : ApiResponse {
+    public function update($id, CategoryRequest $request): ApiResponse
+    {
         $this->categoryUpdateAction->handle($id, $request->validated());
         return new ApiResponse(null);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Actions\Auth\AuthLoginAction;
+use App\Actions\Auth\AuthLogoutAction;
 use App\Actions\Auth\AuthRegisterAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
@@ -12,7 +13,8 @@ class AuthController extends Controller
 {
     public function __construct(
         protected AuthLoginAction $loginAction,
-        protected AuthRegisterAction $registerAction
+        protected AuthRegisterAction $registerAction,
+        public AuthLogoutAction $logoutAction
     ) {}
 
     /**
@@ -42,5 +44,11 @@ class AuthController extends Controller
         }
         $token = $user->createToken('token')->plainTextToken;
         return new ApiResponse($token);
+    }
+
+    public function logout() : ApiResponse 
+    {
+        $this->logoutAction->handle();
+        return new ApiResponse(null);
     }
 }

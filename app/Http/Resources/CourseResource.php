@@ -23,7 +23,7 @@ class CourseResource extends JsonResource
                 'description' => $this->description,
                 'languages' => $this->languages,
                 'price' => $this->price,
-                'image' => $this->image ? asset('storage/' . $this->image) : null,
+                'image' => new ImageResource($this->image),
                 'category' => [
                     'id' => $this->category->id,
                     'name' => $this->category->name,

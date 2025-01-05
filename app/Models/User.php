@@ -54,14 +54,31 @@ class User extends Authenticatable
         ];
     }
 
-    public function courses() : HasMany {
+    /**
+     * Get the courses that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function courses(): HasMany
+    {
         return $this->hasMany(Course::class);
     }
 
-    public function roles() : BelongsToMany {
+    /**
+     * Get the roles that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * Get the lessons that the user has completed.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function completedLessons()
     {
         return $this->belongsToMany(Lesson::class, 'completed_lessons');

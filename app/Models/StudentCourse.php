@@ -17,11 +17,18 @@ class StudentCourse extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function student() : BelongsTo{
+    public function student(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'student_id');
     }
 
-    public function course() : BelongsTo{
+    /**
+     * The course that owns the StudentCourse
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function course(): BelongsTo
+    {
         return $this->belongsTo(Course::class);
     }
 }

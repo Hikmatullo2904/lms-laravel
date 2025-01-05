@@ -14,21 +14,31 @@ class Course extends Model
 
     protected $guarded = ['id'];
 
-    protected function casts() : array{
+    protected function casts(): array
+    {
         return [
             'languages' => 'array',
         ];
     }
 
-    public function sections() : HasMany {
+    public function sections(): HasMany
+    {
         return $this->hasMany(CourseSection::class);
     }
 
-    public function lessons() : HasManyThrough {
+    public function lessons(): HasManyThrough
+    {
         return $this->HasManyThrough(Lesson::class, CourseSection::class);
     }
 
-    public function category() : BelongsTo {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
+    }
+
+
+    public function course_reviews(): HasMany
+    {
+        return $this->hasMany(CourseReview::class);
     }
 }

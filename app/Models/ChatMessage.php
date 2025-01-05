@@ -16,7 +16,8 @@ class ChatMessage extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function chat() {
+    public function chat()
+    {
         return $this->belongsTo(Chat::class);
     }
 }

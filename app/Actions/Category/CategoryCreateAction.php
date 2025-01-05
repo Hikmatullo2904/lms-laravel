@@ -4,7 +4,6 @@ namespace App\Actions\Category;
 
 use App\Models\Category;
 use App\Repositories\Contracts\CategoryRepositoryInterface;
-use Illuminate\Support\Facades\Storage;
 
 class CategoryCreateAction {
 
@@ -18,15 +17,11 @@ class CategoryCreateAction {
      * @param array $request The validated request data containing the 'name' and 'image' fields.
      * @return \App\Models\Category The newly created category.
      */
-    public function handle(array $request ) : Category {
-        $url = null;
-        if($request['image']) {
-            $url = Storage::disk('public')->putFile('files', $request['image']);
-        }
+    public function handle(array $request ) : Category {        
 
         $category = Category::create([
             'name' => $request['name'],
-            'image' => $url
+            'image' => $request['image']
         ]);
         return $category;
 

@@ -12,7 +12,13 @@ class Lesson extends Model
 
     protected $guarded = ['id'];
 
-    public function courseSection() : BelongsTo {
+    /**
+     * Get the course section that owns the Lesson
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function courseSection(): BelongsTo
+    {
         return $this->belongsTo(CourseSection::class);
     }
 

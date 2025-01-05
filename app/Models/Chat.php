@@ -16,7 +16,8 @@ class Chat extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function messages() {
+    public function messages()
+    {
         return $this->hasMany(ChatMessage::class);
     }
 }

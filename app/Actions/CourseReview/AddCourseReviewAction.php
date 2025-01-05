@@ -20,6 +20,11 @@ class AddCourseReviewAction
      * @return void
      */
     public function handle(array $data) : void {
-        $this->courseReviewRepository->create($data);
+        $course = $this->courseReviewRepository->findOne(['user_id' => $data['user_id'], 'course_id' => $data['course_id']]);
+        if ($course == null) {
+            $this->courseReviewRepository->create($data);
+        } else {
+            $this->courseReviewRepository->update($course->id, $data);
+        }
     }
 }

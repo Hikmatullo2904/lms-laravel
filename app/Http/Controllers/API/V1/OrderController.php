@@ -21,7 +21,8 @@ class OrderController extends Controller
         public GetUserOrdersAction $getUserOrdersAction,
         public GetAllOrdersAction $getAllOrdersAction,
         public GetOrderAction $getOrderAction
-    ) {}
+    ) {
+    }
 
     /**
      * Creates a new order for the given course.
@@ -29,7 +30,8 @@ class OrderController extends Controller
      * @param int $course_id The ID of the course to create the order for.
      * @return ApiResponse The response containing the ID of the created order.
      */
-    public function create(int $course_id) : ApiResponse {
+    public function create(int $course_id): ApiResponse
+    {
         $order_id = $this->createOrderAction->handle($course_id);
         return new ApiResponse($order_id);
     }
@@ -40,7 +42,8 @@ class OrderController extends Controller
      * @param OrderPaymentRequest $orderPaymentRequest The request containing validated order payment data.
      * @return ApiResponse The response indicating the success or failure of the payment process.
      */
-    public function pay(OrderPaymentRequest $orderPaymentRequest) : ApiResponse {
+    public function pay(OrderPaymentRequest $orderPaymentRequest): ApiResponse
+    {
         $this->payOrderAction->handle($orderPaymentRequest->validated());
         return new ApiResponse(null);
     }
@@ -50,7 +53,8 @@ class OrderController extends Controller
      *
      * @return OrderCollection The list of orders.
      */
-    public function userOrders() : OrderCollection {
+    public function userOrders(): OrderCollection
+    {
         $orders = $this->getUserOrdersAction->handle(auth()->user()->id);
         return new OrderCollection($orders);
     }
@@ -63,7 +67,8 @@ class OrderController extends Controller
      *
      * @return OrderCollection The paginated list of orders.
      */
-    public function getOrders(int $page = 1, int $size = 10) : OrderCollection {
+    public function getOrders(int $page = 1, int $size = 10): OrderCollection
+    {
         $orders = $this->getAllOrdersAction->handle($page, $size);
         return new OrderCollection($orders);
     }
@@ -75,7 +80,8 @@ class OrderController extends Controller
      *
      * @return OrderResource The order with the given ID.
      */
-    public function getOrder(int $id) : OrderResource {
+    public function getOrder(int $id): OrderResource
+    {
         $order = $this->getOrderAction->handle($id);
         return new OrderResource($order);
     }

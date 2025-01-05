@@ -22,15 +22,17 @@ class UserController extends Controller
         protected UserGetAllAction $userGetAllAction,
         protected UserUpdateAction $userUpdateAction,
         protected UserDeleteAction $userDeleteAction
-    ) {}
-    
+    ) {
+    }
+
     /**
      * Create a new user in storage.
      *
      * @param \App\Http\Requests\UserRequest $request The request containing the validated user data.
      * @return \App\Http\Resources\UserResource
      */
-    public function create(UserRequest $request) {
+    public function create(UserRequest $request)
+    {
         $user = $this->userCreateAction->handle($request->validated());
         return new UserResource($user);
     }
@@ -42,7 +44,8 @@ class UserController extends Controller
      * @param \App\Http\Requests\UserUpdateRequest $request The request containing the validated user data.
      * @return \App\Http\Resources\UserResource
      */
-    public function update($id, UserUpdateRequest $request) {
+    public function update($id, UserUpdateRequest $request)
+    {
         $user = User::findOrFail($id);
         $user = $this->userUpdateAction->handle($user, $request->validated());
         return new UserResource($user);
@@ -54,7 +57,8 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \App\Http\Resources\UserCollection
      */
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $page = $request->input('page', 1);
         $size = $request->input('size', 10);
         return new UserCollection($this->userGetAllAction->handle($page, $size));
@@ -66,7 +70,8 @@ class UserController extends Controller
      * @param int $id The ID of the user to delete.
      * @return \App\Http\Resources\ApiResponse
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->userDeleteAction->handle(User::findOrFail($id));
         return new ApiResponse(null);
     }

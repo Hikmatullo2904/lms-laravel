@@ -18,7 +18,8 @@ class CourseSection extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function course() : BelongsTo {
+    public function course(): BelongsTo
+    {
         return $this->belongsTo(Course::class);
     }
 
@@ -27,7 +28,8 @@ class CourseSection extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function lessons() : HasMany {
+    public function lessons(): HasMany
+    {
         return $this->hasMany(Lesson::class);
     }
 }

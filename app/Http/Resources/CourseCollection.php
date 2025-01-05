@@ -29,7 +29,9 @@ class CourseCollection extends ResourceCollection
                         'name' => $course->category->name,
                         'image' => $course->category ? asset('storage/' . $course->category->image) : null
                     ],
-                    'image' => $course->image ? asset('storage/' . $course->image) : null
+                    'image' => $course->image ? asset('storage/' . $course->image) : null,
+                    'review_count' => $course->comments_count,
+                    'rating' => $course->average_rating
                 ];
             })
         ];
