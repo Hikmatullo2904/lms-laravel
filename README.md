@@ -20,6 +20,39 @@ The LMS System is a learning management platform where:
 
 ## Getting Started
 
+## You can application in two ways. You can run it using docker or install it on your local machine
+
+
+### Using docker. 
+- You should have docker installed on your machine.
+- Run the following command to start the application:
+
+Copy the `.env.example file` to `.env`:
+
+```
+cp .env.example .env
+```
+Then run this command
+```
+docker-compose up --build -d
+```
+then run the following command to migrate the database:
+
+```
+docker exec -it Laravel_php php artisan migrate
+```
+Now you can access the application at `http://localhost:8000`.
+
+
+### Installing on your local machine
+You should have the following installed:
+- [Laravel](https://laravel.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Composer](https://getcomposer.org/)
+- [Git](https://git-scm.com/)
+- [PHP](https://www.php.net/)
+- [Nginx](https://www.nginx.com/)
+
 ### 1. Clone the Repository
 
 ```
